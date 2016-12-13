@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TasksViewController.swift
 //  DoItRight!
 //
 //  Created by Marc Streeter on 12/12/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class TasksViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
    @IBOutlet weak var tableView: UITableView!
     
@@ -16,7 +16,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup aft er loading the view, typically from a nib.
     
     tasks = makeTasks()
         
@@ -62,8 +62,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     
     @IBAction func plusTapped(_ sender: AnyObject) {
-   performSegue(withIdentifier: "addSegue", sender: nil)
+    performSegue(withIdentifier: "addSegue", sender: nil)
     }
 
-}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! CreateTaskViewController
+        nextVC.previousVC = self
+        
+    }
 
+
+
+
+}

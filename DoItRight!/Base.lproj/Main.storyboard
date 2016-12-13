@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="1010" y="36"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Task View Controller-->
         <scene sceneID="a2f-JQ-LpF">
             <objects>
-                <viewController id="7CR-W4-M51" sceneMemberID="viewController">
+                <viewController id="7CR-W4-M51" customClass="CreateTaskViewController" customModule="DoItRight_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mxy-p3-HaW"/>
                         <viewControllerLayoutGuide type="bottom" id="um7-fj-Duq"/>
@@ -59,8 +60,51 @@
                     <view key="view" contentMode="scaleToFill" id="BDB-bB-F9i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTP-xB-qSg">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8DE-YP-uhZ">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XED-oa-IQo">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="opf-Uf-65W">
+                                <connections>
+                                    <action selector="addTapped:" destination="7CR-W4-M51" eventType="valueChanged" id="7ye-2m-n6h"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWq-tK-myy">
+                                <state key="normal" title="Add"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8DE-YP-uhZ" firstAttribute="centerX" secondItem="BDB-bB-F9i" secondAttribute="centerX" id="1qd-Zo-2Sw"/>
+                            <constraint firstItem="opf-Uf-65W" firstAttribute="top" secondItem="XED-oa-IQo" secondAttribute="bottom" constant="10" id="2SZ-Is-9b0"/>
+                            <constraint firstItem="8DE-YP-uhZ" firstAttribute="leading" secondItem="BDB-bB-F9i" secondAttribute="leadingMargin" constant="40" id="C3B-re-Jfn"/>
+                            <constraint firstItem="GWq-tK-myy" firstAttribute="top" secondItem="opf-Uf-65W" secondAttribute="bottom" constant="40" id="IrB-c4-IW0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8DE-YP-uhZ" secondAttribute="trailing" constant="40" id="JEl-FI-4na"/>
+                            <constraint firstItem="OTP-xB-qSg" firstAttribute="top" secondItem="Mxy-p3-HaW" secondAttribute="bottom" constant="15" id="Kgw-jj-hfw"/>
+                            <constraint firstItem="OTP-xB-qSg" firstAttribute="centerX" secondItem="BDB-bB-F9i" secondAttribute="centerX" id="Ruk-HO-bSp"/>
+                            <constraint firstItem="opf-Uf-65W" firstAttribute="centerX" secondItem="BDB-bB-F9i" secondAttribute="centerX" id="VTX-jX-Y2G"/>
+                            <constraint firstItem="XED-oa-IQo" firstAttribute="top" secondItem="8DE-YP-uhZ" secondAttribute="bottom" constant="30" id="Y6S-S4-cu4"/>
+                            <constraint firstItem="8DE-YP-uhZ" firstAttribute="top" secondItem="OTP-xB-qSg" secondAttribute="bottom" constant="10" id="okP-Y3-iZR"/>
+                            <constraint firstItem="GWq-tK-myy" firstAttribute="centerX" secondItem="BDB-bB-F9i" secondAttribute="centerX" id="qzb-QZ-cm0"/>
+                            <constraint firstItem="XED-oa-IQo" firstAttribute="centerX" secondItem="BDB-bB-F9i" secondAttribute="centerX" id="t7y-gl-e56"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="importantSwitch" destination="opf-Uf-65W" id="JuC-Jk-WLN"/>
+                        <outlet property="taskNameTextField" destination="8DE-YP-uhZ" id="5oq-hZ-ag8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PjC-Ma-P9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
